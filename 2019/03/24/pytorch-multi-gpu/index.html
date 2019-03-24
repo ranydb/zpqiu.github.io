@@ -73,6 +73,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="Alex Chiu的学习空间" type="application/atom+xml">
 
@@ -85,7 +87,7 @@
 <meta name="keywords" content="PyTorch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PyTorch 的多卡并行训练">
-<meta property="og:url" content="http://yoursite.com/2019/03/24/pytorch-multi-gpu/index.html">
+<meta property="og:url" content="https://zpqiu.github.io/2019/03/24/pytorch-multi-gpu/index.html">
 <meta property="og:site_name" content="Alex Chiu的学习空间">
 <meta property="og:description" content="DataParallel并行的方式分为了数据并行。 DataParallel 会将module复制到多个卡上，也会将每个batch均分到每张卡上，每张卡独立forward自己那份data，而在backward时，每个卡上的梯度会汇总到原始的module上，以此来实现并行。 但是，这样的方式会造成原始module在的那张卡的显存压力比其他卡要大，也就是这种方式存在负载不均衡的情况。具体情况可以看py">
 <meta property="og:locale" content="zh-Hans">
@@ -122,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/24/pytorch-multi-gpu/">
+  <link rel="canonical" href="https://zpqiu.github.io/2019/03/24/pytorch-multi-gpu/">
 
 
 
@@ -245,7 +247,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/pytorch-multi-gpu/">
+    <link itemprop="mainEntityOfPage" href="https://zpqiu.github.io/2019/03/24/pytorch-multi-gpu/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">

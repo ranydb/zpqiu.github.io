@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://zpqiu.github.io/"/>
   <updated>2019-03-24T08:38:50.231Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://zpqiu.github.io/</id>
   
   <author>
     <name>Alex Chiu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>PyTorch 的多卡并行训练</title>
-    <link href="http://yoursite.com/2019/03/24/pytorch-multi-gpu/"/>
-    <id>http://yoursite.com/2019/03/24/pytorch-multi-gpu/</id>
+    <link href="https://zpqiu.github.io/2019/03/24/pytorch-multi-gpu/"/>
+    <id>https://zpqiu.github.io/2019/03/24/pytorch-multi-gpu/</id>
     <published>2019-03-24T07:51:00.093Z</published>
     <updated>2019-03-24T08:38:50.231Z</updated>
     
@@ -35,14 +35,14 @@
     </summary>
     
     
-      <category term="PyTorch" scheme="http://yoursite.com/tags/PyTorch/"/>
+      <category term="PyTorch" scheme="https://zpqiu.github.io/tags/PyTorch/"/>
     
   </entry>
   
   <entry>
     <title>Question Difﬁculty Prediction for READING Problems in Standard Tests 笔记</title>
-    <link href="http://yoursite.com/2018/12/04/question-difficulty-prediction-note/"/>
-    <id>http://yoursite.com/2018/12/04/question-difficulty-prediction-note/</id>
+    <link href="https://zpqiu.github.io/2018/12/04/question-difficulty-prediction-note/"/>
+    <id>https://zpqiu.github.io/2018/12/04/question-difficulty-prediction-note/</id>
     <published>2018-12-04T15:37:55.779Z</published>
     <updated>2018-12-04T15:58:00.284Z</updated>
     
@@ -58,16 +58,16 @@
     </summary>
     
     
-      <category term="Paper" scheme="http://yoursite.com/tags/Paper/"/>
+      <category term="Paper" scheme="https://zpqiu.github.io/tags/Paper/"/>
     
-      <category term="Education" scheme="http://yoursite.com/tags/Education/"/>
+      <category term="Education" scheme="https://zpqiu.github.io/tags/Education/"/>
     
   </entry>
   
   <entry>
     <title>hello-page</title>
-    <link href="http://yoursite.com/2018/12/04/hello-page/"/>
-    <id>http://yoursite.com/2018/12/04/hello-page/</id>
+    <link href="https://zpqiu.github.io/2018/12/04/hello-page/"/>
+    <id>https://zpqiu.github.io/2018/12/04/hello-page/</id>
     <published>2018-12-04T15:30:54.000Z</published>
     <updated>2018-12-04T15:30:54.656Z</updated>
     
@@ -80,8 +80,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/12/04/hello-world/"/>
-    <id>http://yoursite.com/2018/12/04/hello-world/</id>
+    <link href="https://zpqiu.github.io/2018/12/04/hello-world/"/>
+    <id>https://zpqiu.github.io/2018/12/04/hello-world/</id>
     <published>2018-12-04T15:01:05.835Z</published>
     <updated>2018-12-04T15:01:05.835Z</updated>
     
