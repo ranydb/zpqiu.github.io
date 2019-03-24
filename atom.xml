@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Alex Chiu的学习空间</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-12-04T15:58:00.284Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Alex Chiu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Question Difﬁculty Prediction for READING Problems in Standard Tests 笔记</title>
+    <link href="http://yoursite.com/2018/12/04/question-difficulty-prediction-note/"/>
+    <id>http://yoursite.com/2018/12/04/question-difficulty-prediction-note/</id>
+    <published>2018-12-04T15:37:55.779Z</published>
+    <updated>2018-12-04T15:58:00.284Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Question-Difﬁculty-Prediction-for-READING-Problems-in-Standard-Tests"><a href="#Question-Difﬁculty-Prediction-for-READING-Problems-in-Standard-Tests" class="headerlink" title="Question Difﬁculty Prediction for READING Problems in Standard Tests"></a>Question Difﬁculty Prediction for READING Problems in Standard Tests</h1><h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><ol><li>预测难度很重要，可以帮助组题等</li><li>之前的工作基本是利用专家标注，labor intensive and subjective，带有bias</li><li>大规模积累的题目文本和学生做题log为我们提供了建立一种不用人工干预的方法的机会</li></ol><h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><ol><li>如何对文本进行语义表达</li><li>对不同考试下的不同题目的难度（错答率）对比没有意义，需要找到一种方法来训练模型</li></ol><h2 id="Framework"><a href="#Framework" class="headerlink" title="Framework"></a>Framework</h2><p>框架图如下所示：<br><img src="https://lh3.googleusercontent.com/-ndMkRYXVJsY/XAafuquCyfI/AAAAAAAAIMk/B9Hwv0_ldioAaVVpxg1sdJBVask6McvNQCHMYCw/I/15439171873234.jpg" alt="-w1295"></p><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ol><li>题目的文本材料，以句子为单元，句子由词组成</li><li>学生的做题log</li></ol><h3 id="Sentence-CNN-Layer"><a href="#Sentence-CNN-Layer" class="headerlink" title="Sentence CNN Layer"></a>Sentence CNN Layer</h3><p>这部分是通过CNN来encode文本中的句子。CNN能从local到global的捕捉文本中的语义信息。文中采用的 wide-CNN 和 p-max pooling 结合的方式。</p><p><em>不是很清楚为啥采用这种CNN结构，而不是如同textCNN一样的进行2-D卷积。</em></p><p><strong>CNN的操作是：</strong></p><p>将连续k个words的embedding拼接，然后与权重矩阵相同得到新的隐层向量。</p><script type="math/tex; mode=display">\vec { h } _ { i } ^ { c } = \sigma \left( \mathbf { G } \cdot \left[ w _ { i - k + 1 } \oplus \cdots \oplus w _ { i } \right] + \mathbf { b } \right)</script><p><strong>Pooling的操作是：</strong><br>将连续k个word的按维度进行pool， 公式如下：</p><script type="math/tex; mode=display">\vec { h } _ { i } ^ { c p } = \left[ \max \left[ \begin{array} { c } { h _ { i - p + 1,1 } ^ { c } } \\ { \dot { h _ { i , 1 } ^ { c } } } \end{array} \right] , \cdots , \max \left[ \begin{array} { c } { h _ { i - p + 1 , d } ^ { c } } \\ { h _ { i , d } ^ { c } } \end{array} \right] \right]</script><p>整个示意图如下，经过多个卷积层最终将sentence编码成等长的向量<br><img src="https://lh3.googleusercontent.com/-IREQwgoaUHs/XAaft18O2II/AAAAAAAAIMg/yrdQ7dicYa8_b74pj_QG6FKghnF-RUspgCHMYCw/I/15439174934168.jpg" alt="-w676"></p><h3 id="Attention-Layer"><a href="#Attention-Layer" class="headerlink" title="Attention Layer"></a>Attention Layer</h3><p>这一层是将阅读材料和选项中的句子表示和问题表示做attention操作，之后得到阅读材料和选项的attentive的表达。</p><p>作者的解释是同一个材料对于不同的question的应该形成不同的表达。这一步应该是来对不同句子对解答问题做的贡献进行qualify？ 感觉这个解释都不是很直觉。</p><p>attention操作文中使用的是cosine函数。</p><h3 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h3><p>这部分是文中的一个重点。文中首先在Figure 1(b)中展示了两道题目在不同的测试中的错答率是不同的，以此说明了不同题目在不同测验下得到的难度是不具有可比性的。因此不能直接将其拿来和predict的难度做loss。</p><p>作者观察到在同一个测验下会有多个题目，而同一测验代表了同一组学生，因此同一测验下的题目难度之间是有可比性的，以此作者提出了 test-dependent pairwise 训练策略。loss function的形式如下：</p><script type="math/tex; mode=display">\mathcal { J } ( \Theta ) = \sum _ { \left( T _ { t } , Q _ { i } , Q _ { j } \right) } \left( \left( P _ { i } ^ { t } - P _ { j } ^ { t } \right) - \left( \mathcal { M } \left( Q _ { i } \right) - \mathcal { M } \left( Q _ { j } \right) \right) \right) ^ { 2 } + \lambda _ { \Theta } \left\| \Theta _ { \mathcal { M } } \right\| ^ { 2 }</script><p>通过拟合同一test下两道题目的difficulty的差值来训练网络中的参数。</p><h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><p>文中提到的数据集不是公开数据集。数据描述也有冲突（log数文中提到接近300万，表格中是2800万，不知道是多打了哪一位数），可能pdf是pre-print的吧。</p><h3 id="Embedding"><a href="#Embedding" class="headerlink" title="Embedding"></a>Embedding</h3><p>用的word2vec的预训练结果，OOV则random</p><h3 id="模型setting"><a href="#模型setting" class="headerlink" title="模型setting"></a>模型setting</h3><div class="table-container"><table><thead><tr><th>Sentence sequence length</th><th>25</th></tr></thead><tbody><tr><td>Word sequence length</td><td>40</td></tr><tr><td>Feature map</td><td>200, 400, 600, 600</td></tr><tr><td>Kernel size(k)</td><td>3</td></tr><tr><td>Pool size(p)</td><td>3, 3, 2, 1</td></tr><tr><td>batch size</td><td>32</td></tr><tr><td>dropout</td><td>0.2</td></tr></tbody></table></div><h3 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h3><ol><li>RMSE</li><li>degree of agreement (DOA) ??</li><li>person 相关系数</li><li>t-test passing ratio ？？ </li></ol><p>本文还和专家标注结果进行了对比。</p><p>挑选了12个测试中的4个阅读材料16到题目，以及7位专家进行评测。</p><p>然后将模型结果以及专家标注结果分别和真值(错答率)进行计算相关系数。结果表明有的模型由于所有的专家。也说明了专家有bias</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Question-Difﬁculty-Prediction-for-READING-Problems-in-Standard-Tests&quot;&gt;&lt;a href=&quot;#Question-Difﬁculty-Prediction-for-READING-Problems-i
+      
+    
+    </summary>
+    
+    
+      <category term="Paper" scheme="http://yoursite.com/tags/Paper/"/>
+    
+      <category term="Education" scheme="http://yoursite.com/tags/Education/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hello-page</title>
+    <link href="http://yoursite.com/2018/12/04/hello-page/"/>
+    <id>http://yoursite.com/2018/12/04/hello-page/</id>
+    <published>2018-12-04T15:30:54.000Z</published>
+    <updated>2018-12-04T15:30:54.656Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/12/04/hello-world/"/>
+    <id>http://yoursite.com/2018/12/04/hello-world/</id>
+    <published>2018-12-04T15:01:05.835Z</published>
+    <updated>2018-12-04T15:01:05.835Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

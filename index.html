@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Alex Chiu的学习空间" type="application/atom+xml">
+
 
 
 
@@ -85,7 +87,7 @@
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Alex Chiu的学习空间">
 <meta property="og:description" content="个人学习笔记">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Alex Chiu的学习空间">
 <meta name="twitter:description" content="个人学习笔记">
@@ -96,7 +98,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -104,7 +106,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -136,7 +138,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -185,7 +187,17 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
-            Home
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
           </a>
         </li>
       
@@ -195,7 +207,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -237,7 +249,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -261,9 +273,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-04T23:37:55+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T23:37:55+08:00">
                 2018-12-04
               </time>
             
@@ -285,6 +297,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -303,84 +346,18 @@
       
         
           
-            <h1 id="Question-Difﬁculty-Prediction-for-READING-Problems-in-Standard-Tests"><a href="#Question-Difﬁculty-Prediction-for-READING-Problems-in-Standard-Tests" class="headerlink" title="Question Difﬁculty Prediction for READING Problems in Standard Tests"></a>Question Difﬁculty Prediction for READING Problems in Standard Tests</h1><h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><ol>
-<li>预测难度很重要，可以帮助组题等</li>
-<li>之前的工作基本是利用专家标注，labor intensive and subjective，带有bias</li>
-<li>大规模积累的题目文本和学生做题log为我们提供了建立一种不用人工干预的方法的机会</li>
-</ol>
-<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><ol>
-<li>如何对文本进行语义表达</li>
-<li>对不同考试下的不同题目的难度（错答率）对比没有意义，需要找到一种方法来训练模型</li>
-</ol>
-<h2 id="Framework"><a href="#Framework" class="headerlink" title="Framework"></a>Framework</h2><p>框架图如下所示：<br><img src="https://lh3.googleusercontent.com/-ndMkRYXVJsY/XAafuquCyfI/AAAAAAAAIMk/B9Hwv0_ldioAaVVpxg1sdJBVask6McvNQCHMYCw/I/15439171873234.jpg" alt="-w1295"></p>
-<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ol>
-<li>题目的文本材料，以句子为单元，句子由词组成</li>
-<li>学生的做题log</li>
-</ol>
-<h3 id="Sentence-CNN-Layer"><a href="#Sentence-CNN-Layer" class="headerlink" title="Sentence CNN Layer"></a>Sentence CNN Layer</h3><p>这部分是通过CNN来encode文本中的句子。CNN能从local到global的捕捉文本中的语义信息。文中采用的 wide-CNN 和 p-max pooling 结合的方式。</p>
-<p><em>不是很清楚为啥采用这种CNN结构，而不是如同textCNN一样的进行2-D卷积。</em></p>
-<p><strong>CNN的操作是：</strong></p>
-<p>将连续k个words的embedding拼接，然后与权重矩阵相同得到新的隐层向量。</p>
-<script type="math/tex; mode=display">
-\vec { h } _ { i } ^ { c } = \sigma \left( \mathbf { G } \cdot \left[ w _ { i - k + 1 } \oplus \cdots \oplus w _ { i } \right] + \mathbf { b } \right)</script><p><strong>Pooling的操作是：</strong><br>将连续k个word的按维度进行pool， 公式如下：</p>
-<script type="math/tex; mode=display">
-\vec { h } _ { i } ^ { c p } = \left[ \max \left[ \begin{array} { c } { h _ { i - p + 1,1 } ^ { c } } \\ { \dot { h _ { i , 1 } ^ { c } } } \end{array} \right] , \cdots , \max \left[ \begin{array} { c } { h _ { i - p + 1 , d } ^ { c } } \\ { h _ { i , d } ^ { c } } \end{array} \right] \right]</script><p>整个示意图如下，经过多个卷积层最终将sentence编码成等长的向量<br><img src="https://lh3.googleusercontent.com/-IREQwgoaUHs/XAaft18O2II/AAAAAAAAIMg/yrdQ7dicYa8_b74pj_QG6FKghnF-RUspgCHMYCw/I/15439174934168.jpg" alt="-w676"></p>
-<h3 id="Attention-Layer"><a href="#Attention-Layer" class="headerlink" title="Attention Layer"></a>Attention Layer</h3><p>这一层是将阅读材料和选项中的句子表示和问题表示做attention操作，之后得到阅读材料和选项的attentive的表达。</p>
-<p>作者的解释是同一个材料对于不同的question的应该形成不同的表达。这一步应该是来对不同句子对解答问题做的贡献进行qualify？ 感觉这个解释都不是很直觉。</p>
-<p>attention操作文中使用的是cosine函数。</p>
-<h3 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h3><p>这部分是文中的一个重点。文中首先在Figure 1(b)中展示了两道题目在不同的测试中的错答率是不同的，以此说明了不同题目在不同测验下得到的难度是不具有可比性的。因此不能直接将其拿来和predict的难度做loss。</p>
-<p>作者观察到在同一个测验下会有多个题目，而同一测验代表了同一组学生，因此同一测验下的题目难度之间是有可比性的，以此作者提出了 test-dependent pairwise 训练策略。loss function的形式如下：</p>
-<script type="math/tex; mode=display">
-\mathcal { J } ( \Theta ) = \sum _ { \left( T _ { t } , Q _ { i } , Q _ { j } \right) } \left( \left( P _ { i } ^ { t } - P _ { j } ^ { t } \right) - \left( \mathcal { M } \left( Q _ { i } \right) - \mathcal { M } \left( Q _ { j } \right) \right) \right) ^ { 2 } + \lambda _ { \Theta } \left\| \Theta _ { \mathcal { M } } \right\| ^ { 2 }</script><p>通过拟合同一test下两道题目的difficulty的差值来训练网络中的参数。</p>
-<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><p>文中提到的数据集不是公开数据集。数据描述也有冲突（log数文中提到接近300万，表格中是2800万，不知道是多打了哪一位数），可能pdf是pre-print的吧。</p>
-<h3 id="Embedding"><a href="#Embedding" class="headerlink" title="Embedding"></a>Embedding</h3><p>用的word2vec的预训练结果，OOV则random</p>
-<h3 id="模型setting"><a href="#模型setting" class="headerlink" title="模型setting"></a>模型setting</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Sentence sequence length</th>
-<th>25</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Word sequence length</td>
-<td>40</td>
-</tr>
-<tr>
-<td>Feature map</td>
-<td>200, 400, 600, 600</td>
-</tr>
-<tr>
-<td>Kernel size(k)</td>
-<td>3</td>
-</tr>
-<tr>
-<td>Pool size(p)</td>
-<td>3, 3, 2, 1</td>
-</tr>
-<tr>
-<td>batch size</td>
-<td>32</td>
-</tr>
-<tr>
-<td>dropout</td>
-<td>0.2</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h3><ol>
-<li>RMSE</li>
-<li>degree of agreement (DOA) ??</li>
-<li>person 相关系数</li>
-<li>t-test passing ratio ？？ </li>
-</ol>
-<p>本文还和专家标注结果进行了对比。</p>
-<p>挑选了12个测试中的4个阅读材料16到题目，以及7位专家进行评测。</p>
-<p>然后将模型结果以及专家标注结果分别和真值(错答率)进行计算相关系数。结果表明有的模型由于所有的专家。也说明了专家有bias</p>
-
-          
+          Question Difﬁculty Prediction for READING Problems in Standard TestsMotivation
+预测难度很重要，可以帮助组题等
+之前的工作基本是利用专家标注，labor intensive and subjective，带有bias
+大规
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/04/question-difficulty-prediction-note/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -432,7 +409,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -456,9 +433,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-04T23:30:54+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T23:30:54+08:00">
                 2018-12-04
               </time>
             
@@ -480,6 +457,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -498,8 +506,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/04/hello-page/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -551,7 +566,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -575,9 +590,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-04T23:01:05+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T23:01:05+08:00">
                 2018-12-04
               </time>
             
@@ -599,6 +614,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -617,17 +663,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/04/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -696,6 +740,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Alex Chiu">
+            
               <p class="site-author-name" itemprop="name">Alex Chiu</p>
               <p class="site-description motion-element" itemprop="description">个人学习笔记</p>
           </div>
@@ -708,7 +754,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -721,13 +767,20 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">标签</span>
                 
               </div>
             
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
@@ -757,7 +810,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -767,7 +820,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -775,7 +828,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -784,6 +837,15 @@
 
 
 
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=66372663";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -874,6 +936,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 
