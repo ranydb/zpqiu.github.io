@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/03/24/pytorch-multi-gpu/</loc>
+    
+    <lastmod>2019-03-24T08:38:50.231Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/12/04/question-difficulty-prediction-note/</loc>
     
     <lastmod>2018-12-04T15:58:00.284Z</lastmod>
