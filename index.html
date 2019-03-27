@@ -2,6 +2,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
@@ -9,20 +18,8 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="google-site-verification" content="fRJHi65D52YUaCryJ3bpQMUwNsJ5Wo_cxEDAiJjwGpM">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -37,52 +34,69 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
 
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Alex Chiu的学习空间" type="application/atom+xml">
-
-
-
-
-
-
-<meta name="description" content="个人学习笔记">
+  <meta name="description" content="个人学习笔记">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Alex Chiu的学习空间">
 <meta property="og:url" content="https://zpqiu.github.io/index.html">
@@ -95,29 +109,8 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+  <link rel="alternate" href="/atom.xml" title="Alex Chiu的学习空间" type="application/atom+xml">
+
 
 
 
@@ -125,7 +118,11 @@
 
 
 
-
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Alex Chiu的学习空间</title>
   
@@ -136,6 +133,35 @@
 
 
 
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
@@ -152,7 +178,7 @@
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -162,13 +188,12 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -176,45 +201,69 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home menu-item-active">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
   
 
   
@@ -222,12 +271,23 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -240,6 +300,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -249,8 +311,8 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="description" content="个人学习笔记">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -262,27 +324,41 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Dual Co-Matching Network for Multi-choice Reading Comprehension笔记/" itemprop="url">Dual Co-Matching Network for Multi-choice Reading Comprehension笔记</a></h1>
+                
+                <a href="/Dual Co-Matching Network for Multi-choice Reading Comprehension笔记/" class="post-title-link" itemprop="url">Dual Co-Matching Network for Multi-choice Reading Comprehension笔记</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T12:38:14+08:00">
-                2019-03-27
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-03-27 12:38:14 / Modified: 12:39:47" itemprop="dateCreated datePublished" datetime="2019-03-27T12:38:14+08:00">2019-03-27</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -290,6 +366,7 @@
 
           
             
+            
           
 
           
@@ -298,18 +375,17 @@
           
 
           
-            <div class="post-wordcount">
+            <div class="post-symbolscount">
               
-                
+
+              
                 <span class="post-meta-item-icon">
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">字数统计&#58;</span>
+                  <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="字数统计">
-                  
-                </span>
+                <span title="Symbols count in article">1.9k</span>
               
 
               
@@ -321,11 +397,9 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="阅读时长">
-                  
-                </span>
+                <span title="Reading time">2 mins.</span>
               
             </div>
           
@@ -347,27 +421,40 @@
       
         
           
-          Intro目前流行的SQuAD数据集是比较简单的MRC任务，因为已经给定了阅读段落，而且问题的答案已经被完全的包含在了阅读段落里。
+            <p>
+              Intro目前流行的SQuAD数据集是比较简单的MRC任务，因为已经给定了阅读段落，而且问题的答案已经被完全的包含在了阅读段落里。
 本文针对了一个更难的数据集RACE。RACE数据集的问题答案不一定包含在给定的阅读材料中，这需要模型更加深度地了解阅读材料。
 
-Model基于BERT来设计的Model
-          ...
+Model基于BERT来设计的Model， 输入为 P Q A，分别为阅读材料、问题和候选答案。
+Encoding Layer首先用BERT分别编码P Q 和 A。而不是如BERT一样直接用 [CLS] 的embedding作为表达。
+
+\mathbf{H}^{p}=B E R T(\mathbf{P}), \mathbf{H}^{q}=
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Dual Co-Matching Network for Multi-choice Reading Comprehension笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/Dual Co-Matching Network for Multi-choice Reading Comprehension笔记/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -398,6 +485,8 @@ Model基于BERT来设计的Model
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
@@ -409,8 +498,8 @@ Model基于BERT来设计的Model
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="description" content="个人学习笔记">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -422,27 +511,41 @@ Model基于BERT来设计的Model
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/BERT的一些实践/" itemprop="url">BERT的一些实践</a></h1>
+                
+                <a href="/BERT的一些实践/" class="post-title-link" itemprop="url">BERT的一些实践</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T12:36:49+08:00">
-                2019-03-27
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-03-27 12:36:49 / Modified: 12:39:23" itemprop="dateCreated datePublished" datetime="2019-03-27T12:36:49+08:00">2019-03-27</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -450,6 +553,7 @@ Model基于BERT来设计的Model
 
           
             
+            
           
 
           
@@ -458,18 +562,17 @@ Model基于BERT来设计的Model
           
 
           
-            <div class="post-wordcount">
+            <div class="post-symbolscount">
               
-                
+
+              
                 <span class="post-meta-item-icon">
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">字数统计&#58;</span>
+                  <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="字数统计">
-                  
-                </span>
+                <span title="Symbols count in article">1.3k</span>
               
 
               
@@ -481,11 +584,9 @@ Model基于BERT来设计的Model
                   <i class="fa fa-clock-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="阅读时长">
-                  
-                </span>
+                <span title="Reading time">1 mins.</span>
               
             </div>
           
@@ -507,27 +608,43 @@ Model基于BERT来设计的Model
       
         
           
-          阅读材料关于BERT的解读有很多，我在学习的时候主要阅读了以下的几篇分享：
+            <p>
+              阅读材料关于BERT的解读有很多，我在学习的时候主要阅读了以下的几篇分享：
 
 BERT原始论文，BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
-ELMo原始论文 Deep context
-          ...
+ELMo原始论文 Deep contextualized word representations
+nlp的巨人肩膀
+The Illustrated BERT, ELMo, and co
+Transformer的可视化
+The Annotated Transformer
+
+关于Pre-train作者在Github的BERT的README里提
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/BERT的一些实践/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/BERT的一些实践/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -558,6 +675,8 @@ ELMo原始论文 Deep context
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
@@ -569,8 +688,8 @@ ELMo原始论文 Deep context
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="description" content="个人学习笔记">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -582,27 +701,41 @@ ELMo原始论文 Deep context
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/learning-to-ask/" itemprop="url">Learning to Ask Neural Question Generation for Reading Comprehension 笔记</a></h1>
+                
+                <a href="/learning-to-ask/" class="post-title-link" itemprop="url">Learning to Ask Neural Question Generation for Reading Comprehension 笔记</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T12:35:03+08:00">
-                2019-03-27
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-03-27 12:35:03 / Modified: 12:40:40" itemprop="dateCreated datePublished" datetime="2019-03-27T12:35:03+08:00">2019-03-27</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -610,6 +743,7 @@ ELMo原始论文 Deep context
 
           
             
+            
           
 
           
@@ -618,18 +752,17 @@ ELMo原始论文 Deep context
           
 
           
-            <div class="post-wordcount">
+            <div class="post-symbolscount">
               
-                
+
+              
                 <span class="post-meta-item-icon">
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">字数统计&#58;</span>
+                  <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="字数统计">
-                  
-                </span>
+                <span title="Symbols count in article">2.4k</span>
               
 
               
@@ -641,11 +774,9 @@ ELMo原始论文 Deep context
                   <i class="fa fa-clock-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="阅读时长">
-                  
-                </span>
+                <span title="Reading time">2 mins.</span>
               
             </div>
           
@@ -667,26 +798,38 @@ ELMo原始论文 Deep context
       
         
           
-          感觉和 “Neural Question Generation from Text: A Preliminary Study” 这篇很像的工作，都是基于 Seq2Seq 的思想来做 Question Generation。
+            <p>
+              感觉和 “Neural Question Generation from Text: A Preliminary Study” 这篇很像的工作，都是基于 Seq2Seq 的思想来做 Question Generation。
 两者的区别在与 Encode 和 Decode 的设计吧。
-Encode 和
-          ...
+Encode 和 DecodeLearning to ask 利用 Bi-LSTM 来编码，将状态拼接，在decode阶段还用于做attention。
+这篇论文还对paragraph（包含答案的段落）做了encode，但是是利用了另外一个 Bi-LSTM。将最后一个状态拼接作为输出。
+在Decode时使用了带att
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/learning-to-ask/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/learning-to-ask/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -717,6 +860,8 @@ Encode 和
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
@@ -728,8 +873,8 @@ Encode 和
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="description" content="个人学习笔记">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -741,27 +886,41 @@ Encode 和
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/pytorch-multi-gpu/" itemprop="url">PyTorch 的多卡并行训练</a></h1>
+                
+                <a href="/pytorch-multi-gpu/" class="post-title-link" itemprop="url">PyTorch 的多卡并行训练</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T15:51:00+08:00">
-                2019-03-24
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-03-24 15:51:00 / Modified: 16:38:50" itemprop="dateCreated datePublished" datetime="2019-03-24T15:51:00+08:00">2019-03-24</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -769,6 +928,7 @@ Encode 和
 
           
             
+            
           
 
           
@@ -777,18 +937,17 @@ Encode 和
           
 
           
-            <div class="post-wordcount">
+            <div class="post-symbolscount">
               
-                
+
+              
                 <span class="post-meta-item-icon">
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">字数统计&#58;</span>
+                  <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="字数统计">
-                  
-                </span>
+                <span title="Symbols count in article">2.9k</span>
               
 
               
@@ -800,11 +959,9 @@ Encode 和
                   <i class="fa fa-clock-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="阅读时长">
-                  
-                </span>
+                <span title="Reading time">3 mins.</span>
               
             </div>
           
@@ -826,25 +983,36 @@ Encode 和
       
         
           
-          DataParallel并行的方式分为了数据并行。 DataParallel 会将module复制到多个卡上，也会将每个batch均分到每张卡上，每张卡独立forward自己那份data，而在backward时，每个卡上的梯度会汇总到原始的module上，以此来实现并行。
-但是，这样的方式会造成原始
-          ...
+            <p>
+              DataParallel并行的方式分为了数据并行。 DataParallel 会将module复制到多个卡上，也会将每个batch均分到每张卡上，每张卡独立forward自己那份data，而在backward时，每个卡上的梯度会汇总到原始的module上，以此来实现并行。
+但是，这样的方式会造成原始module在的那张卡的显存压力比其他卡要大，也就是这种方式存在负载不均衡的情况。具体情况可以看pytorch： 一机多卡训练的尝试这篇文章的实验。
+Multiprocessing另外一种方式是利用Python的多进程，每张卡运行一个进程，每个进程有一个自己的model和一份数据，求梯度时则将多张卡
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/pytorch-multi-gpu/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/pytorch-multi-gpu/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -875,6 +1043,8 @@ Encode 和
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
@@ -886,8 +1056,8 @@ Encode 和
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="description" content="个人学习笔记">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -899,27 +1069,41 @@ Encode 和
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/question-difficulty-prediction-note/" itemprop="url">Question Difﬁculty Prediction for READING Problems in Standard Tests 笔记</a></h1>
+                
+                <a href="/question-difficulty-prediction-note/" class="post-title-link" itemprop="url">Question Difﬁculty Prediction for READING Problems in Standard Tests 笔记</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T23:37:55+08:00">
-                2018-12-04
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2018-12-04 23:37:55 / Modified: 23:58:00" itemprop="dateCreated datePublished" datetime="2018-12-04T23:37:55+08:00">2018-12-04</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -927,6 +1111,7 @@ Encode 和
 
           
             
+            
           
 
           
@@ -935,18 +1120,17 @@ Encode 和
           
 
           
-            <div class="post-wordcount">
+            <div class="post-symbolscount">
               
-                
+
+              
                 <span class="post-meta-item-icon">
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">字数统计&#58;</span>
+                  <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="字数统计">
-                  
-                </span>
+                <span title="Symbols count in article">2.3k</span>
               
 
               
@@ -958,11 +1142,9 @@ Encode 和
                   <i class="fa fa-clock-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="阅读时长">
-                  
-                </span>
+                <span title="Reading time">2 mins.</span>
               
             </div>
           
@@ -984,27 +1166,46 @@ Encode 和
       
         
           
-          Question Difﬁculty Prediction for READING Problems in Standard TestsMotivation
+            <p>
+              Question Difﬁculty Prediction for READING Problems in Standard TestsMotivation
 预测难度很重要，可以帮助组题等
 之前的工作基本是利用专家标注，labor intensive and subjective，带有bias
-大规
-          ...
+大规模积累的题目文本和学生做题log为我们提供了建立一种不用人工干预的方法的机会
+
+Challenges
+如何对文本进行语义表达
+对不同考试下的不同题目的难度（错答率）对比没有意义，需要找到一种方法来训练模型
+
+Framework框架图如下所示：
+输入
+题目的文本材料，以句子为单元，句子由词组成
+学生的
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/question-difficulty-prediction-note/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/question-difficulty-prediction-note/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1035,6 +1236,8 @@ Encode 和
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
@@ -1046,8 +1249,8 @@ Encode 和
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="description" content="个人学习笔记">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -1059,25 +1262,35 @@ Encode 和
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/hello-page/" itemprop="url">hello-page</a></h1>
+                
+                <a href="/hello-page/" class="post-title-link" itemprop="url">hello-page</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T23:30:54+08:00">
-                2018-12-04
-              </time>
-            
 
+              
+                
+              
+
+              <time title="Created: 2018-12-04 23:30:54" itemprop="dateCreated datePublished" datetime="2018-12-04T23:30:54+08:00">2018-12-04</time>
             
 
             
@@ -1087,6 +1300,7 @@ Encode 和
 
           
             
+            
           
 
           
@@ -1095,18 +1309,17 @@ Encode 和
           
 
           
-            <div class="post-wordcount">
+            <div class="post-symbolscount">
               
-                
+
+              
                 <span class="post-meta-item-icon">
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">字数统计&#58;</span>
+                  <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="字数统计">
-                  
-                </span>
+                <span title="Symbols count in article">0</span>
               
 
               
@@ -1118,11 +1331,9 @@ Encode 和
                   <i class="fa fa-clock-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="阅读时长">
-                  
-                </span>
+                <span title="Reading time">1 mins.</span>
               
             </div>
           
@@ -1144,24 +1355,34 @@ Encode 和
       
         
           
-          
-          
+            <p>
+              
+              
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hello-page/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/hello-page/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1194,6 +1415,8 @@ Encode 和
   
   
 
+  
+
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -1203,8 +1426,8 @@ Encode 和
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="description" content="个人学习笔记">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -1216,25 +1439,35 @@ Encode 和
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/hello-world/" itemprop="url">Hello World</a></h1>
+                
+                <a href="/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T23:01:05+08:00">
-                2018-12-04
-              </time>
-            
 
+              
+                
+              
+
+              <time title="Created: 2018-12-04 23:01:05" itemprop="dateCreated datePublished" datetime="2018-12-04T23:01:05+08:00">2018-12-04</time>
             
 
             
@@ -1244,6 +1477,7 @@ Encode 和
 
           
             
+            
           
 
           
@@ -1252,18 +1486,17 @@ Encode 和
           
 
           
-            <div class="post-wordcount">
+            <div class="post-symbolscount">
               
-                
+
+              
                 <span class="post-meta-item-icon">
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">字数统计&#58;</span>
+                  <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="字数统计">
-                  
-                </span>
+                <span title="Symbols count in article">430</span>
               
 
               
@@ -1275,11 +1508,9 @@ Encode 和
                   <i class="fa fa-clock-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="阅读时长">
-                  
-                </span>
+                <span title="Reading time">1 mins.</span>
               
             </div>
           
@@ -1301,24 +1532,38 @@ Encode 和
       
         
           
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
-          ...
+            <p>
+              Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post$ hexo new "My New Post"
+More info: Writing
+Run server$ hexo server
+More info
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/hello-world/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1351,9 +1596,6 @@ Encode 和
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -1367,50 +1609,67 @@ Encode 和
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Alex Chiu">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpeg" alt="Alex Chiu">
             
               <p class="site-author-name" itemprop="name">Alex Chiu</p>
-              <p class="site-description motion-element" itemprop="description">个人学习笔记</p>
+              <div class="site-description motion-element" itemprop="description">个人学习笔记</div>
           </div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
+          
+            <nav class="site-state motion-element">
               
-                <a href="/archives/">
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
-
-            
               
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
 
-          </nav>
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
@@ -1424,15 +1683,19 @@ Encode 和
           
 
           
+
           
 
           
           
 
+          
+            
+          
           
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -1440,6 +1703,7 @@ Encode 和
 
     </div>
   </aside>
+  
 
 
         
@@ -1448,17 +1712,33 @@ Encode 和
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Alex Chiu</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">11k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">10 mins.</span>
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -1466,7 +1746,7 @@ Encode 和
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
 
 
 
@@ -1476,7 +1756,7 @@ Encode 和
 
 
 
-  <script type="text/javascript">
+  <script>
     (function() {
       var hm = document.createElement("script");
       hm.src = "//tajs.qq.com/stats?sId=66372663";
@@ -1484,6 +1764,7 @@ Encode 和
       s.parentNode.insertBefore(hm, s);
     })();
   </script>
+
 
 
 
@@ -1501,11 +1782,14 @@ Encode 和
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1519,99 +1803,11 @@ Encode 和
 
 
 
-  
 
 
 
 
 
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -1625,9 +1821,40 @@ Encode 和
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
 
 
 
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
 
 
   
@@ -1637,31 +1864,102 @@ Encode 和
   
 
   
+
+
+
+  
+
+
+
+
+  
+
   
 
   
   
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 
