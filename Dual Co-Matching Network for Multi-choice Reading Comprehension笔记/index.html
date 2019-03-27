@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="BERT,NLP,">
 
 
 
@@ -82,17 +82,21 @@
 
 
 
-<meta name="description" content="个人学习笔记">
+<meta name="description" content="Intro目前流行的SQuAD数据集是比较简单的MRC任务，因为已经给定了阅读段落，而且问题的答案已经被完全的包含在了阅读段落里。 本文针对了一个更难的数据集RACE。RACE数据集的问题答案不一定包含在给定的阅读材料中，这需要模型更加深度地了解阅读材料。  Model基于BERT来设计的Model， 输入为 P Q A，分别为阅读材料、问题和候选答案。 Encoding Layer首先用BERT">
+<meta name="keywords" content="BERT,NLP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hello-page">
-<meta property="og:url" content="https://zpqiu.github.io/hello-page/index.html">
+<meta property="og:title" content="Dual Co-Matching Network for Multi-choice Reading Comprehension笔记">
+<meta property="og:url" content="https://zpqiu.github.io/Dual Co-Matching Network for Multi-choice Reading Comprehension笔记/index.html">
 <meta property="og:site_name" content="Alex Chiu的学习空间">
-<meta property="og:description" content="个人学习笔记">
+<meta property="og:description" content="Intro目前流行的SQuAD数据集是比较简单的MRC任务，因为已经给定了阅读段落，而且问题的答案已经被完全的包含在了阅读段落里。 本文针对了一个更难的数据集RACE。RACE数据集的问题答案不一定包含在给定的阅读材料中，这需要模型更加深度地了解阅读材料。  Model基于BERT来设计的Model， 输入为 P Q A，分别为阅读材料、问题和候选答案。 Encoding Layer首先用BERT">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-04T15:30:54.656Z">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/3/27/169bcff42d75dfc7?w=2586&h=1190&f=png&s=452272">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/3/27/169bd0076b7c25fd?w=1304&h=868&f=png&s=227108">
+<meta property="og:updated_time" content="2019-03-27T04:39:47.945Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hello-page">
-<meta name="twitter:description" content="个人学习笔记">
+<meta name="twitter:title" content="Dual Co-Matching Network for Multi-choice Reading Comprehension笔记">
+<meta name="twitter:description" content="Intro目前流行的SQuAD数据集是比较简单的MRC任务，因为已经给定了阅读段落，而且问题的答案已经被完全的包含在了阅读段落里。 本文针对了一个更难的数据集RACE。RACE数据集的问题答案不一定包含在给定的阅读材料中，这需要模型更加深度地了解阅读材料。  Model基于BERT来设计的Model， 输入为 P Q A，分别为阅读材料、问题和候选答案。 Encoding Layer首先用BERT">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/3/27/169bcff42d75dfc7?w=2586&h=1190&f=png&s=452272">
 
 
 
@@ -122,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://zpqiu.github.io/hello-page/">
+  <link rel="canonical" href="https://zpqiu.github.io/Dual Co-Matching Network for Multi-choice Reading Comprehension笔记/">
 
 
 
 
 
-  <title>hello-page | Alex Chiu的学习空间</title>
+  <title>Dual Co-Matching Network for Multi-choice Reading Comprehension笔记 | Alex Chiu的学习空间</title>
   
 
 
@@ -245,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zpqiu.github.io/hello-page/">
+    <link itemprop="mainEntityOfPage" href="https://zpqiu.github.io/Dual Co-Matching Network for Multi-choice Reading Comprehension笔记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">
@@ -262,7 +266,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hello-page</h1>
+          <h1 class="post-title" itemprop="name headline">Dual Co-Matching Network for Multi-choice Reading Comprehension笔记</h1>
         
 
         <div class="post-meta">
@@ -274,8 +278,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T23:30:54+08:00">
-                2018-12-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T12:38:14+08:00">
+                2019-03-27
               </time>
             
 
@@ -343,7 +347,34 @@
       
 
       
-        
+        <h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><p>目前流行的SQuAD数据集是比较简单的MRC任务，因为已经给定了阅读段落，而且问题的答案已经被完全的包含在了阅读段落里。</p>
+<p>本文针对了一个更难的数据集RACE。RACE数据集的问题答案<strong>不一定</strong>包含在给定的阅读材料中，这需要模型更加深度地了解阅读材料。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/3/27/169bcff42d75dfc7?w=2586&amp;h=1190&amp;f=png&amp;s=452272" alt=""></p>
+<h1 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h1><p>基于BERT来设计的Model， 输入为 P Q A，分别为阅读材料、问题和候选答案。</p>
+<h2 id="Encoding-Layer"><a href="#Encoding-Layer" class="headerlink" title="Encoding Layer"></a>Encoding Layer</h2><p>首先用BERT分别编码P Q 和 A。而不是如BERT一样直接用 [CLS] 的embedding作为表达。</p>
+<script type="math/tex; mode=display">
+\mathbf{H}^{p}=B E R T(\mathbf{P}), \mathbf{H}^{q}=B E R T(\mathbf{Q})</script><script type="math/tex; mode=display">\mathbf{H}^{a}=BERT(\mathbf{A})</script><h2 id="Matching-Layer"><a href="#Matching-Layer" class="headerlink" title="Matching Layer"></a>Matching Layer</h2><p>分别进行了P和A的attention，以及P和Q的attention。下面是以P和A之间的attention为例的公式。</p>
+<p><strong>Attention</strong></p>
+<p>先计算matching matrix</p>
+<script type="math/tex; mode=display">
+\mathbf{W}=\operatorname{SoftMax}\left(\mathbf{H}^{p}\left(H^{a} G+b\right)^{T}\right)</script><p>再Attend，得到passage-wise下的answer表达，以及answer-wise下的passage表达</p>
+<script type="math/tex; mode=display">
+\mathbf{M}^{p}=\mathbf{W} \mathbf{H}^{a}, \mathbf{M}^{a}=\mathbf{W}^{T} \mathbf{H}^{p}</script><p><strong>Fuse</strong></p>
+<p>将attend后的表达与原始的表达进行融合。其中 $\mathbf{S}^{a}$ 和 $\mathbf{S}^{p}$是最终的表达。</p>
+<script type="math/tex; mode=display">
+\mathbf{S}^{a}=F\left(\left[\mathbf{M}^{a}-\mathbf{H}^{a} ; \mathbf{M}^{a} \cdot \mathbf{H}^{a}\right] W_{1}+b_{1}\right)</script><script type="math/tex; mode=display">
+\mathbf{S}^{p}=F\left(\left[\mathbf{M}^{p}-\mathbf{H}^{p} ; \mathbf{M}^{p} \cdot \mathbf{H}^{p}\right] W_{2}+b_{2}\right)</script><p>同样地，通过对P和Q之间的attention操作，可以得到 $\mathbf{S}^{q}$ 和 $\mathbf{S}^{p’}$</p>
+<h2 id="Aggregation-Layer"><a href="#Aggregation-Layer" class="headerlink" title="Aggregation Layer"></a>Aggregation Layer</h2><p>这一步是在上一步的结果上做row-wise max pooling，得到每个sequence的表达。</p>
+<p>比如，对$\mathbf{S}^{p}$做max-pooling，得到</p>
+<script type="math/tex; mode=display">
+\mathbf{C}^{p}=Pooling\left(\mathbf{S}^{p}\right)</script><p>同样的操作，可以得到$\mathbf{C}^{p} ; \mathbf{C}^{a} ; \mathbf{C}^{p^{\prime}} ; \mathbf{C}^{q}$</p>
+<p>将四个vector进行concatenate，就得到了对于一个 {P,Q,A} 三元组的表达 $\mathbf{C} = [\mathbf{C}^{p} ; \mathbf{C}^{a} ; \mathbf{C}^{p^{\prime}} ; \mathbf{C}^{q}]$，每个选项都有对应的表达 $\mathbf{C}_i$.</p>
+<p>loss function可以定义为：</p>
+<script type="math/tex; mode=display">
+L\left(\mathbf{A}_{i} | \mathbf{P}, \mathbf{Q}\right)=-\log \frac{\exp \left(V^{T} \mathbf{C}_{i}\right)}{\sum_{j=1}^{N} \exp \left(V^{T} \mathbf{C}_{j}\right)}</script><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整个模型的结构还是很简洁的，而且非常类似于这篇预测题目难度的paper，即<a href="https://juejin.im/post/5c979c435188252d645831ed" target="_blank" rel="noopener">Question Difﬁculty Prediction for READING Problems in Standard Tests 笔记</a>，感兴趣的可以看看那篇。两者的网络结构很相似，只不过一个拿来预测题目难度，一个拿来预测正确答案。</p>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><p>DCMN在RACE数据集上取得了SOTA的结果，论文中po出的结果如下：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/3/27/169bd0076b7c25fd?w=1304&amp;h=868&amp;f=png&amp;s=227108" alt=""></p>
+
       
     </div>
     
@@ -358,6 +389,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/BERT/" rel="tag"># BERT</a>
+          
+            <a href="/tags/NLP/" rel="tag"># NLP</a>
+          
+        </div>
+      
 
       
       
@@ -367,8 +406,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/BERT的一些实践/" rel="next" title="BERT的一些实践">
+                <i class="fa fa-chevron-left"></i> BERT的一些实践
               </a>
             
           </div>
@@ -376,10 +415,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/question-difficulty-prediction-note/" rel="prev" title="Question Difﬁculty Prediction for READING Problems in Standard Tests 笔记">
-                Question Difﬁculty Prediction for READING Problems in Standard Tests 笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -431,8 +466,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -492,6 +536,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Model"><span class="nav-number">2.</span> <span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Encoding-Layer"><span class="nav-number">2.1.</span> <span class="nav-text">Encoding Layer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matching-Layer"><span class="nav-number">2.2.</span> <span class="nav-text">Matching Layer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aggregation-Layer"><span class="nav-number">2.3.</span> <span class="nav-text">Aggregation Layer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验"><span class="nav-number">3.</span> <span class="nav-text">实验</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -702,6 +762,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

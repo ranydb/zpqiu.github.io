@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="BERT,NLP,">
 
 
 
@@ -82,17 +82,18 @@
 
 
 
-<meta name="description" content="个人学习笔记">
+<meta name="description" content="阅读材料关于BERT的解读有很多，我在学习的时候主要阅读了以下的几篇分享：  BERT原始论文，BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding ELMo原始论文 Deep contextualized word representations nlp的巨人肩膀 The Illustra">
+<meta name="keywords" content="BERT,NLP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hello-page">
-<meta property="og:url" content="https://zpqiu.github.io/hello-page/index.html">
+<meta property="og:title" content="BERT的一些实践">
+<meta property="og:url" content="https://zpqiu.github.io/BERT的一些实践/index.html">
 <meta property="og:site_name" content="Alex Chiu的学习空间">
-<meta property="og:description" content="个人学习笔记">
+<meta property="og:description" content="阅读材料关于BERT的解读有很多，我在学习的时候主要阅读了以下的几篇分享：  BERT原始论文，BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding ELMo原始论文 Deep contextualized word representations nlp的巨人肩膀 The Illustra">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-04T15:30:54.656Z">
+<meta property="og:updated_time" content="2019-03-27T04:39:23.776Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hello-page">
-<meta name="twitter:description" content="个人学习笔记">
+<meta name="twitter:title" content="BERT的一些实践">
+<meta name="twitter:description" content="阅读材料关于BERT的解读有很多，我在学习的时候主要阅读了以下的几篇分享：  BERT原始论文，BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding ELMo原始论文 Deep contextualized word representations nlp的巨人肩膀 The Illustra">
 
 
 
@@ -122,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://zpqiu.github.io/hello-page/">
+  <link rel="canonical" href="https://zpqiu.github.io/BERT的一些实践/">
 
 
 
 
 
-  <title>hello-page | Alex Chiu的学习空间</title>
+  <title>BERT的一些实践 | Alex Chiu的学习空间</title>
   
 
 
@@ -245,7 +246,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zpqiu.github.io/hello-page/">
+    <link itemprop="mainEntityOfPage" href="https://zpqiu.github.io/BERT的一些实践/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex Chiu">
@@ -262,7 +263,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hello-page</h1>
+          <h1 class="post-title" itemprop="name headline">BERT的一些实践</h1>
         
 
         <div class="post-meta">
@@ -274,8 +275,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T23:30:54+08:00">
-                2018-12-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T12:36:49+08:00">
+                2019-03-27
               </time>
             
 
@@ -343,7 +344,31 @@
       
 
       
-        
+        <h1 id="阅读材料"><a href="#阅读材料" class="headerlink" title="阅读材料"></a>阅读材料</h1><p>关于BERT的解读有很多，我在学习的时候主要阅读了以下的几篇分享：</p>
+<ul>
+<li>BERT原始论文，<a href="http://arxiv.org/abs/1810.04805" target="_blank" rel="noopener">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a></li>
+<li>ELMo原始论文 <a href="http://arxiv.org/abs/1802.05365" target="_blank" rel="noopener">Deep contextualized word representations</a></li>
+<li><a href="http://www.xuwei.io/2018/11/20/nlp的巨人肩膀/" target="_blank" rel="noopener">nlp的巨人肩膀</a></li>
+<li><a href="https://jalammar.github.io/illustrated-bert/" target="_blank" rel="noopener">The Illustrated BERT, ELMo, and co</a></li>
+<li><a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">Transformer的可视化</a></li>
+<li><a href="http://nlp.seas.harvard.edu/2018/04/03/attention.html" target="_blank" rel="noopener">The Annotated Transformer</a></li>
+</ul>
+<h1 id="关于Pre-train"><a href="#关于Pre-train" class="headerlink" title="关于Pre-train"></a>关于Pre-train</h1><p>作者在Github的BERT的README里提到了几点需要注意的事项：</p>
+<ul>
+<li>如果domain的数据集够大，可以在BERT Google model基础上进行额外的pre-training，也可以理解为对BERT原始的语言模型进行fine-tuning</li>
+<li>BERT的paper中pre-train的lr为1e-4，如果进行额外pre-training 应该设小一点的lr，如2e-5。我自己的实验也表明了，lr=1e-4会得到比较差的结果。但是</li>
+<li>sequences 越长带来的显存压力越大，而且是和sequence length的平方呈线性相关。</li>
+</ul>
+<h1 id="关于fine-tune-Google的原始语言模型"><a href="#关于fine-tune-Google的原始语言模型" class="headerlink" title="关于fine-tune Google的原始语言模型"></a>关于fine-tune Google的原始语言模型</h1><p>用Domain数据集对Google的原始语言模型进行fine-tuning，之后再训练任务的方式（即ULMFit论文采用的模式)不一定会有效果。</p>
+<p>我的实验发现，这种方式对于小数据集有比较大的提升，但是对大数据集基本没差异。猜测，</p>
+<ul>
+<li>一方面，对于大数据集，BERT在训练任务的同时就完成了在Domain上的fine-tuning。</li>
+<li>另一方面，即便是Domain相关的语料，但是其中大部分的字词都是和Domain无关的，相关的仅仅是部分实体，因此再基于这份语料训练语言模型，其实已经起不到多大的作用。</li>
+</ul>
+<p>还有一个方式是改造BERT里的Masked Language Model任务，BERT是随机Mask一些token来预测，但是对于中文其实是Mask了一些的字(因为BERT的谷歌模型对中文是按字来处理的)。或许我们选择Mask Domain下的一些entity来预测的方式能更好地学习Domain下的语言模型。近日，百度也放出的工作<a href="https://github.com/PaddlePaddle/LARK/tree/develop/ERNIE" target="_blank" rel="noopener">ERNIE</a>也是采用的这种思想，其在中文多项任务上超过了BERT。</p>
+<p>ERNIE模型的一个例子如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Learnt by BERT ：哈 [mask] 滨是 [mask] 龙江的省会，[mask] 际冰 [mask] 文化名城。</span><br><span class="line"></span><br><span class="line">Learnt by ERNIE：[mask] [mask] [mask] 是黑龙江的省会，国际 [mask] [mask] 文化名城。</span><br></pre></td></tr></table></figure></p>
+<p>ERNIE使模型根据上下文就能推断出整个实体。当然ERNIE还引入了对话语料来改造 Next Sentence Prediction的任务。ERNIE的论文还没有放出，后续可以关注一下。</p>
+
       
     </div>
     
@@ -358,6 +383,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/BERT/" rel="tag"># BERT</a>
+          
+            <a href="/tags/NLP/" rel="tag"># NLP</a>
+          
+        </div>
+      
 
       
       
@@ -367,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/learning-to-ask/" rel="next" title="Learning to Ask Neural Question Generation for Reading Comprehension 笔记">
+                <i class="fa fa-chevron-left"></i> Learning to Ask Neural Question Generation for Reading Comprehension 笔记
               </a>
             
           </div>
@@ -377,8 +410,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/question-difficulty-prediction-note/" rel="prev" title="Question Difﬁculty Prediction for READING Problems in Standard Tests 笔记">
-                Question Difﬁculty Prediction for READING Problems in Standard Tests 笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/Dual Co-Matching Network for Multi-choice Reading Comprehension笔记/" rel="prev" title="Dual Co-Matching Network for Multi-choice Reading Comprehension笔记">
+                Dual Co-Matching Network for Multi-choice Reading Comprehension笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -431,8 +464,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -492,6 +534,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#阅读材料"><span class="nav-number">1.</span> <span class="nav-text">阅读材料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于Pre-train"><span class="nav-number">2.</span> <span class="nav-text">关于Pre-train</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于fine-tune-Google的原始语言模型"><span class="nav-number">3.</span> <span class="nav-text">关于fine-tune Google的原始语言模型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -702,6 +760,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
