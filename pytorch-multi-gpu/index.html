@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Alex Chiu的学习空间">
 <meta property="og:description" content="DataParallel并行的方式分为了数据并行。 DataParallel 会将module复制到多个卡上，也会将每个batch均分到每张卡上，每张卡独立forward自己那份data，而在backward时，每个卡上的梯度会汇总到原始的module上，以此来实现并行。 但是，这样的方式会造成原始module在的那张卡的显存压力比其他卡要大，也就是这种方式存在负载不均衡的情况。具体情况可以看py">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-24T08:38:50.231Z">
+<meta property="og:updated_time" content="2019-04-02T07:53:02.884Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PyTorch 的多卡并行训练">
 <meta name="twitter:description" content="DataParallel并行的方式分为了数据并行。 DataParallel 会将module复制到多个卡上，也会将每个batch均分到每张卡上，每张卡独立forward自己那份data，而在backward时，每个卡上的梯度会汇总到原始的module上，以此来实现并行。 但是，这样的方式会造成原始module在的那张卡的显存压力比其他卡要大，也就是这种方式存在负载不均衡的情况。具体情况可以看py">
@@ -351,12 +351,24 @@
                 
               
 
-              <time title="Created: 2019-03-24 15:51:00 / Modified: 16:38:50" itemprop="dateCreated datePublished" datetime="2019-03-24T15:51:00+08:00">2019-03-24</time>
+              <time title="Created: 2019-03-24 15:51:00" itemprop="dateCreated datePublished" datetime="2019-03-24T15:51:00+08:00">2019-03-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-02 15:53:02" itemprop="dateModified" datetime="2019-04-02T15:53:02+08:00">2019-04-02</time>
               
             
           </span>
@@ -384,7 +396,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.9k</span>
+                <span title="Symbols count in article">3.7k</span>
               
 
               
@@ -434,6 +446,11 @@
 <h1 id="Apex"><a href="#Apex" class="headerlink" title="Apex"></a>Apex</h1><p>NVIDIA开发的支持并行和混合精度的辅助函数。 Github地址为：<a href="https://github.com/NVIDIA/apex" target="_blank" rel="noopener">apex</a><br>。</p>
 <p>主要是对PyTorch多进程方式的多卡训练代码的封装，重要的是支持fp16的训练，以及混合精度的训练。</p>
 <p>但是我还没用过apex，这里先不写了。</p>
+<h1 id="Accumulating-gradients"><a href="#Accumulating-gradients" class="headerlink" title="Accumulating gradients"></a>Accumulating gradients</h1><p>还有一种方式是累加梯度Accumulating gradients（参考自<a href="https://medium.com/huggingface/training-larger-batches-practical-tips-on-1-gpu-multi-gpu-distributed-setups-ec88c3e51255" target="_blank" rel="noopener">Training Neural Nets on Larger Batches: Practical Tips for 1-GPU, Multi-GPU &amp; Distributed setups</a>，作者是<a href="https://github.com/huggingface/pytorch-pretrained-BERT" target="_blank" rel="noopener">huggingface/pytorch-pretrained-BERT</a>的作者。）</p>
+<p>方法很简单，就是假设batch_size=32，但是1个GPU的显存放不下，我们可以在forward的时候将整个batch分为8份，每次过size=4的小batch，计算小batch的梯度后进行backward，然后<strong>先不要更新参数</strong>，而是继续forward第二个小batch，计算loss，然后backward，而且将第二个小batch的梯度<strong>累加</strong>到第一个小的batch的梯度上，如此，当4个小batch都计算出梯度，再更新参数。</p>
+<p>这样的方式在PyTorch里很容易实现，因为只有我们调用 <code>model.zero_grad()</code> 或者<code>optimizer.zero_grad()</code>时，缓存的梯度才会被重置。</p>
+<p>Thomas Wolf给出了一个gist的例子，可以供我们参考，<br><a href="https://gist.github.com/thomwolf/3359a5e6d534b97be0cf160fb4f6bbcb" target="_blank" rel="noopener">Accumulating gradients</a>。或者我们可以直接参考<a href="https://github.com/huggingface/pytorch-pretrained-BERT" target="_blank" rel="noopener">huggingface/pytorch-pretrained-BERT</a>里的写法。</p>
+<p><strong>Accumulating gradients</strong> 可以和分布式训练结合使用，来达到增大batch_size的作用，因为对于BERT等大模型来说，再加一些下游框架，batch_size只能设到个位数，而paper中建议的batch_size都在16或者32，太小的batch_size也会影响到模型的性能。因此我们需要更大的batch_size来稳定训练过程。</p>
 
       
     </div>
@@ -629,7 +646,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DataParallel"><span class="nav-number">1.</span> <span class="nav-text">DataParallel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Multiprocessing"><span class="nav-number">2.</span> <span class="nav-text">Multiprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">2.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apex"><span class="nav-number">3.</span> <span class="nav-text">Apex</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DataParallel"><span class="nav-number">1.</span> <span class="nav-text">DataParallel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Multiprocessing"><span class="nav-number">2.</span> <span class="nav-text">Multiprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">2.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apex"><span class="nav-number">3.</span> <span class="nav-text">Apex</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Accumulating-gradients"><span class="nav-number">4.</span> <span class="nav-text">Accumulating gradients</span></a></li></ol></div>
             
 
           </div>
@@ -662,7 +679,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">11k</span>
+    <span title="Symbols count total">12k</span>
   
 
   
@@ -671,7 +688,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">10 mins.</span>
+    <span title="Reading time total">11 mins.</span>
   
 </div>
 
