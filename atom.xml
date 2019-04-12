@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zpqiu.github.io/"/>
-  <updated>2019-03-27T04:39:47.945Z</updated>
+  <updated>2019-04-12T08:53:43.748Z</updated>
   <id>https://zpqiu.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>apex的实践</title>
+    <link href="https://zpqiu.github.io/apex%E7%9A%84%E5%AE%9E%E8%B7%B5/"/>
+    <id>https://zpqiu.github.io/apex的实践/</id>
+    <published>2019-04-12T08:53:02.779Z</published>
+    <updated>2019-04-12T08:53:43.748Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/NVIDIA/apex" target="_blank" rel="noopener">apex</a>是NVIDIA开源的用于在PyTorch框架下实现混合精度训练的模块，能够方便地进行FP16训练。</p><blockquote><p> This repository holds NVIDIA-maintained utilities to streamline mixed precision and distributed training in Pytorch. Some of the code here will be included in upstream Pytorch eventually. The intention of Apex is to make up-to-date utilities available to users as quickly as possible.</p></blockquote><p>其API地址为 <a href="https://nvidia.github.io/apex" target="_blank" rel="noopener">https://nvidia.github.io/apex</a></p><h1 id="安装中踩的坑"><a href="#安装中踩的坑" class="headerlink" title="安装中踩的坑"></a>安装中踩的坑</h1><p>我在编译安装apex的过程中遇到了一些问题，通过查issues来解决的。</p><p><strong>使用时碰到segmentation fault</strong></p><p>可以试试gcc5，可以用 conda install -c psi4 gcc-5 来安装，参考 <a href="https://github.com/NVIDIA/apex/issues/35" target="_blank" rel="noopener">https://github.com/NVIDIA/apex/issues/35</a></p><p><strong>如果碰到”GLIBCXX_3.4.20’ not found”这个问题</strong></p><p>可以试试找到 path_to_anaconda3/lib/libstdc++.so.6， 然后连接到apex引用的路径下，或者自己加一个lib PATH。</p><p><strong>如果碰到FusedLayerNorm有关的错误</strong></p><p>可能是和没装cuda的扩展，可以</p><blockquote><p>Try a full pip uninstall apex, then cd apex_repo_dir; rm-rf build; python setup.py install —cuda_ext —cpp_ext and see if the segfault persists.”</p></blockquote><p>参考<a href="https://github.com/huggingface/pytorch-pretrained-BERT/issues/284" target="_blank" rel="noopener">https://github.com/huggingface/pytorch-pretrained-BERT/issues/284</a></p><h1 id="使用时的坑"><a href="#使用时的坑" class="headerlink" title="使用时的坑"></a>使用时的坑</h1><p><strong>AttributeError: ‘NoneType’ object has no attribute ‘contiguous’</strong></p><p>模型中有无用的layers(weights)(例子: <a href="https://github.com/FDecaYed/pytorch-pretrained-BERT/blob/master/pytorch_pretrained_bert/modeling.py#L740)，导致反向传递梯度后，这些weights的梯度为none，就会报“AttributeError" target="_blank" rel="noopener">https://github.com/FDecaYed/pytorch-pretrained-BERT/blob/master/pytorch_pretrained_bert/modeling.py#L740)，导致反向传递梯度后，这些weights的梯度为none，就会报“AttributeError</a>: ‘NoneType’ object has no attribute ‘contiguous’”的错误，可以参考<a href="https://github.com/NVIDIA/apex/issues/131" target="_blank" rel="noopener">https://github.com/NVIDIA/apex/issues/131</a></p><p>解决方案：1. 改apex的源码，让其判断梯度是否为none，2. 改模型，去掉无用的weights，第二种方法更好一些，或者等apex更新吧。</p><p><strong>p.type().is_cuda() ASSERT FAILED at csrc/fused_adam_cuda.cpp:12</strong></p><p>这个错误是我自己的问题，model.cuda() 应该在 FusedAdam的声明之前，不然会报这个错误。</p><p><strong>cuda runtime error (77) : an illegal memory access</strong></p><p>我现在碰到了这个错误，也不知道该怎么定位，在 <a href="https://github.com/huggingface/pytorch-pretrained-BERT/issues/465" target="_blank" rel="noopener">https://github.com/huggingface/pytorch-pretrained-BERT/issues/465</a> 也有一个人遇到了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://github.com/NVIDIA/apex&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;apex&lt;/a&gt;是NVIDIA开源的用于在PyTorch框架下实现混合精度训练的模块，能够方便地进行FP16训练。&lt;/p&gt;
+&lt;bl
+      
+    
+    </summary>
+    
+    
+      <category term="PyTorch" scheme="https://zpqiu.github.io/tags/PyTorch/"/>
+    
+  </entry>
   
   <entry>
     <title>Dual Co-Matching Network for Multi-choice Reading Comprehension笔记</title>
